@@ -1,0 +1,61 @@
+Steps for user
+    - Select shape
+        - Circle (default), Triangle, Square, Pentagon, 
+          Hexagon, Custom shape option input edge #
+    - Select degree distance or number of points
+        - ex: 5 deg or 72 points 
+    - Input function
+        - ex: 2n, 3n, 1/3n
+    - Toggle point numbers on/off
+    - Toggle animation on/off
+    - Print out list instructions
+
+Internal Steps
+    - When page opened defaults
+        - Circle radio button selected and shown
+        - Degree radio button selected with input 0, 
+          points radio button with input 0
+        - Default function input is 0
+    - Build shape from radio button selected
+        - Built in constructors & custom constructors
+    - Display shape in graph
+    - Display amount of points/degrees input
+        - Bad input if amount of points < 2
+    - Calculate dot connections based on number input
+        - Display function being calculated, ex n = 2n 
+          mod 72 where n = point # and 72 = # of point
+    - Display connecting lines
+    - Animate lines
+    - Show steps on right hand side of each connection
+
+Tasks:
+    - Create simple webpage using React
+        - Display box for grid
+        - Column down the right to show steps
+        - Radio buttons and input below grid
+    - Create shape constructors
+        - Circle
+        - Create other shape constructors 
+    - Create point/degree constructor
+        - Display
+    - Create function constructor
+        - Animate Display (Python Turtle)
+    - Print out point connections on right
+    - Create point number toggle button
+
+Extra:
+    - Shape constructors besides circle
+        - Custom constructor
+    - # of points input
+    - Display function
+        - Animate drawing
+    - Display steps to create
+    - Toggle point #
+    - Toggle animation
+    - Host on netlify
+
+Programs used:
+    - Svelte for webpage creation
+    - Python package manager
+    - Github repository
+    - Netlify to host online
