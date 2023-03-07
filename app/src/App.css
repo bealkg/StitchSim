@@ -1,3 +1,5 @@
+@import "mafs/core.css";
+
 .App {
     text-align: center;
     font-family: sans-serif;
@@ -53,17 +55,8 @@
     grid-row: 5;
 }
 
-.turtle{
-    margin: 5px;
-    /* border: 1px solid #344e41; */
-    padding: 5px;
-    /* background-color: aliceblue; */
-    aspect-ratio: 1/1;
-    /* width: max-content; */
-    width: 480px;
-    height: 320px;
-    margin-left: auto;
-    margin-right: auto;
+.turtle {
+    margin-left: 25%;
 }
 
 [type="text"] {
