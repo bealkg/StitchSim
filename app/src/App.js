@@ -2,7 +2,7 @@ import './App.css';
 import Shape from './components/shape.js';
 import Points from './components/points.js';
 import Function from './components/function.js';
-import Toggles from './components/toggles.js';
+// import Toggles from './components/toggles.js';
 import Display from './components/display.js';
 import Steps from './components/steps.js';
 
@@ -22,9 +22,9 @@ function App() {
         <div class="function">      
             <Function />
         </div>
-        <div class="toggles">
+        {/* <div class="toggles">
             <Toggles />
-        </div>
+        </div> */}
         <div class="display">
             <Display />
         </div>

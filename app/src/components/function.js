@@ -19,7 +19,7 @@ class Function extends Component {
                     2 as the function, each point n will be connected to 
                     point 2n. 
                 </p>
-                <input name="function" type="text"/>n % pointTotal
+                <input name="function" type="text"/> n % pointTotal
             </div>
         );
     }

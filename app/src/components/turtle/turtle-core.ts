@@ -116,7 +116,11 @@ class Turtle {
         if (!this.draw) {
             this.draw = true
         }
-        this.circle(2, 0, 0)
+        // if (this.lineWidth < 3) {
+        //     this.lineWidth = 3
+        // }
+        this.lineWidth = 2
+        this.circle(1, 0, 0)
         return this
     }
 

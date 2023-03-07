@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import Turtle from './turtle/Turtle.tsx'
 let points = [];
+let x = 147;
+let y = 3;
 
 class Display extends Component {
     constructor() {
@@ -14,42 +16,30 @@ class Display extends Component {
         return(
             <div class="turtle">
                 <Turtle
-                    style={{
-                        height: 400,
-                        width: 400,
-                    }}
-                    height={400}
-                    width={400}
+                    height={window.innerHeight * 2 / 3}
+                    // width={window.innerWidth / 3}
                     draw={(turtle) => {
+                        turtle.jump(0, -180)
+                        turtle.dot()
+                        turtle.circle(180)
+                        for (let i = 0; i < x; i++) {
+                            turtle.jump(0,0)
+                            turtle.fd(180)
+                            turtle.dot()
+                            points.push([turtle.getxpos(), turtle.getypos()])
+                            turtle.lt(360/x)
+                        }
+                        turtle.stroke()
                         turtle.setlinewidth(1)
-                        drawCircle(72)
-                        connectPoints(2)
-
-                        function drawCircle(x) {
-                            turtle.jump(0,-180)
-                            turtle.circle(180, 0, 0)
-                            for (let i = 0; i < x; ++i) {
-                                turtle.jump(0,0)
-                                turtle.fd(180)
-                                turtle.dot()
-                                points.push([turtle.getxpos(), turtle.getypos()])
-                                turtle.lt(360/x)
-                            }
+                        return function walk(i) {
+                            turtle.pd()
+                            turtle.goto(points[i][0], points[i][1])
+                            let j = i * y % x
+                            turtle.goto(points[j][0], points[j][1])
+                            turtle.pu()
                             turtle.stroke()
-                            return
-                        }
-
-                        function connectPoints(y) {
-                            for (let i = 0; i < points.length; ++i) {
-                                turtle.pd()
-                                turtle.goto(points[i][0], points[i][1])
-                                let j = (i*y) % points.length 
-                                turtle.goto(points[j][0], points[j][1])
-                                turtle.stroke()
-                                turtle.pu()
-                            } 
-                            return
-                        }
+                            return i < x;
+                        };           
                     }}
 		        />
             </div>

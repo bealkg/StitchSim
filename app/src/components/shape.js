@@ -16,27 +16,27 @@ class Shape extends Component {
         <div class="container" onChange={this.onChangeValue}>
             <p>Select the shape you would like to use.</p>
             <table align="center">
-                <tr> 
-                    <label for="circle">
-                        <input type="radio" value="circle" name="shape" id="circle" defaultChecked/> Circle
-                    </label>
-                    <label for="square">
+                <tr align="left"> 
+                    <td><label for="circle">
+                        <input type="radio" value="circle" name="shape" id="circle" defaultChecked/> Circle 
+                    </label></td>
+                    <td><label for="square">
                         <input type="radio" value="square" name="shape" id="square"/> Square
-                    </label>
-                </tr><tr>
-                    <label for="cross">
-                        <input type="radio" value="cross" name="shape" id="cross"/> Cross
-                    </label>
-                    <label for="triangle">
+                    </label></td>
+                </tr><tr align="left">
+                    <td><label for="cross">
+                        <input type="radio" value="cross" name="shape" id="cross"/> Cross 
+                    </label></td>
+                    <td><label for="triangle">
                         <input type="radio" value="triangle" name="shape" id="triangle"/> Triangle
-                    </label>
-                </tr><tr>
-                    <label for="pentagon">
-                        <input type="radio" value="pentagon" name="shape" id="pentagon"/> Pentagon
-                    </label>
-                    <label for="custom">
+                    </label></td>
+                </tr><tr align="left">
+                    <td><label for="pentagon">
+                        <input type="radio" value="pentagon" name="shape" id="pentagon"/> Pentagon 
+                    </label></td>
+                    <td><label for="custom">
                         <input type="radio" value="custom" name="shape" id="custom"/> Custom
-                    </label>                    
+                    </label></td>                    
                 </tr>
             </table>
         </div>

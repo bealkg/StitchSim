@@ -16,7 +16,7 @@ class Points extends Component {
             <div class="container" onChange={this.onChangeValue}>
                 <p>Select degrees to chose the radial distance between two given points. Select 
                     points to chose the amount of points around the perimeter of the shape.</p>
-                    <input name="degrees" type="text"/> degrees
+                    <input name="degrees" type="text"/> degrees &nbsp;
                     <input name="points" type="text"/> points
             </div>
             /*
