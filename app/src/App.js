@@ -1,6 +1,6 @@
 import './App.css';
 import Shape from './components/shape.js';
-import Points from './components/points.js';
+// import Points from './components/points.js';
 import Function from './components/function.js';
 // import Toggles from './components/toggles.js';
 import Display from './components/display.js';
@@ -15,9 +15,6 @@ function App() {
         </div>
         <div class="shape">
             <Shape />
-        </div>
-        <div class="points">
-            <Points />
         </div>
         <div class="function">      
             <Function />

@@ -1,29 +1,24 @@
 import React, { Component } from "react";
 
 class Points extends Component {
-    constructor() {
-        super();
-        this.state = {
-        name: "React"
-        };
-        this.onChangeValue = this.onChangeValue.bind(this);
+    constructor(props) {
+        super(props);
+        this.handleChange = this.handleChange.bind(this);
     }
-    onChangeValue(event) {
-        console.log(event.target.value); 
+
+    handleChange(event) {
+        this.props.onPtChange(event.target.value);
     }
+
     render() {
+        const inputpts = this.props.pts;
         return (
-            <div class="container" onChange={this.onChangeValue}>
-                <p>Select degrees to chose the radial distance between two given points. Select 
-                    points to chose the amount of points around the perimeter of the shape.</p>
-                    <input name="degrees" type="text"/> degrees &nbsp;
-                    <input name="points" type="text"/> points
+            <div class="ptcontainer" onChange={this.onChangeValue}>
+                <p>Select the amount of points around the perimeter of the shape.</p>
+                    <input name="points" type="text" 
+                        value={inputpts}
+                        onChange={this.handleChange}/> points
             </div>
-            /*
-                - input types are either or / whenever one is selected the other should clear out data
-                - degrees can accept decimals, points cannot
-                - need formatting for bad input
-            */
         );
     }
 }
