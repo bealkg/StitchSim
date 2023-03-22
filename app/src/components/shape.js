@@ -1,19 +1,18 @@
 import React, { Component } from "react";
 
 class Shape extends Component {
-    constructor() {
-        super();
-        this.state = {
-        name: "React"
-        };
-        this.onChangeValue = this.onChangeValue.bind(this);
+    constructor(props) {
+        super(props);
+        this.handleChange = this.handleChange.bind(this);
     }
-    onChangeValue(event) {
-        console.log(event.target.value);
+
+    handleChange(event) {
+        this.props.onShChange(event.target.value);
     }
+
     render() {
         return (
-        <div class="container" onChange={this.onChangeValue}>
+        <div class="container" onChange={this.handleChange}>
             <p>Select the shape you would like to use.</p>
             <table align="center">
                 <tr align="left"> 
