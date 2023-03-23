@@ -7,10 +7,11 @@ import Function from './function.js'
 class Display extends Component {
     constructor(props) {
         super(props);
-        this.state = {sh: 'circle', pts: '', fn: '', points: []};
+        this.state = {sh: 'circle', pts: '', fn: '', cu: '6', points: [], vertices: []};
         this.handleShChange = this.handleShChange.bind(this);
         this.handlePtChange = this.handlePtChange.bind(this);
         this.handleFnChange = this.handleFnChange.bind(this);
+        this.handleCuChange = this.handleCuChange.bind(this);
     } 
     
     handleShChange(shape) {
@@ -25,11 +26,17 @@ class Display extends Component {
         this.setState({fn: func});
     }
 
+    handleCuChange(custom) {
+        this.setState({cu: custom});
+    }
+
     render() {
         const sh = this.state.sh;
         const pts = this.state.pts;
         const fn  = this.state.fn;
+        const cu = this.state.cu;
         let pointarr = this.state.points;
+        let vertices = this.state.vertices;
         return(
             <div class="displaywrapper">
                 <div class="shape">
@@ -52,7 +59,6 @@ class Display extends Component {
                                     .pd()
                                     .circle(180)
                                     .stroke()
-                                return
                             }
 
                             function drawSquare() {
@@ -65,7 +71,34 @@ class Display extends Component {
                                         .lt(90)
                                         .stroke()
                                 }
-                                return
+                            }
+
+                            function drawCross() {
+                                for (let i = 0; i < 4; i++) {
+                                    turtle.goto(0,0)
+                                    turtle.fd(180)
+                                    turtle.rt(90)
+                                }
+                                turtle.stroke()
+                            }
+
+                            function drawShape(x) {
+                                turtle.pu()
+                                turtle.seth(11)
+                                for (let i = 0; i < x; i++) {
+                                    turtle.goto(0,0)
+                                    turtle.fd(180)
+                                    vertices.push([turtle.getxpos(), turtle.getypos()])
+                                    turtle.rt(360/x)
+                                }
+                                turtle.pd()
+                                for (let i = 0; i < x-1; i++) {
+                                    turtle.goto(vertices[i][0], vertices[i][1])
+                                    turtle.goto(vertices[i+1][0], vertices[i+1][1])
+                                    turtle.stroke()
+                                }
+                                turtle.goto(vertices[0][0], vertices[0][1])
+                                turtle.stroke()
                             }
 
                             function drawCircleDots(points) {
@@ -81,6 +114,10 @@ class Display extends Component {
                                 return 
                             }
 
+                            // function drawShapeDots(points) {
+
+                            // }
+
                             function drawSquareDots(points) {
                                 if (points % 4 === 0) {
                                     turtle.pu()
@@ -95,7 +132,6 @@ class Display extends Component {
                                         turtle.stroke()
                                     }
                                 }
-                                return
                             }
 
                             function connectCircPts(func) {
@@ -109,16 +145,16 @@ class Display extends Component {
                                 } 
                             }
 
-                            function connectSqPts(func) {
-                                for (let i = 0; i < pts; i++) {
-                                    turtle.pd()
-                                    turtle.goto(pointarr[i][0], pointarr[i][1])
-                                    let j = (i + func + (pts/4)) % pts
-                                    turtle.goto(pointarr[j][0], pointarr[j][1])
-                                    turtle.pu()
-                                    turtle.stroke()
-                                }
-                            }
+                            // function connectSqPts(func) {
+                            //     for (let i = 0; i < pts; i++) {
+                            //         turtle.pd()
+                            //         turtle.goto(pointarr[i][0], pointarr[i][1])
+                            //         let j = (i + func + (pts/4)) % pts
+                            //         turtle.goto(pointarr[j][0], pointarr[j][1])
+                            //         turtle.pu()
+                            //         turtle.stroke()
+                            //     }
+                            // }
 
                             if (sh === "circle") {
                                 drawCircle(1)
@@ -138,7 +174,18 @@ class Display extends Component {
                                         connectCircPts(fn)
                                     }
                                 }
-                            }   
+                            } else if (sh === "cross") {
+                                drawCross(1)
+                            } else if (sh === "triangle") {
+                                vertices = []
+                                drawShape(3)
+                            } else if (sh === "pentagon") {
+                                vertices = []
+                                drawShape(5)
+                            } else if (sh === "custom") {
+                                vertices = []
+                                drawShape(cu)
+                            }
                         }}
                     />
                 </div>

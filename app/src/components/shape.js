@@ -3,16 +3,22 @@ import React, { Component } from "react";
 class Shape extends Component {
     constructor(props) {
         super(props);
-        this.handleChange = this.handleChange.bind(this);
+        this.handleShChange = this.handleShChange.bind(this);
+        this.handleCuChange = this.handleCuChange.bind(this);
     }
 
-    handleChange(event) {
+    handleShChange(event) {
         this.props.onShChange(event.target.value);
     }
 
+    handleCuChange(event) {
+        this.props.onCuChange(event.target.value);
+    }
+
     render() {
+        // const inputcustom = this.props.cu
         return (
-        <div class="container" onChange={this.handleChange}>
+        <div class="container" onChange={this.handleShChange}>
             <p>Select the shape you would like to use.</p>
             <table align="center">
                 <tr align="left"> 
@@ -34,7 +40,8 @@ class Shape extends Component {
                         <input type="radio" value="pentagon" name="shape" id="pentagon"/> Pentagon 
                     </label></td>
                     <td><label for="custom">
-                        <input type="radio" value="custom" name="shape" id="custom"/> Custom
+                        <input type="radio" value="custom" name="shape" id="custom"/> Custom &nbsp;
+                        {/* <input type="text" name="customshape" value={inputcustom} onChange={this.handleCuChange}/> */}
                     </label></td>                    
                 </tr>
             </table>
