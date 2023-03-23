@@ -15,7 +15,7 @@ class Toggles extends Component {
         return ( 
             <div class="container" onChange={this.onChangeValue}>
                 <label for="list">
-                    <input name="list" type="checkbox"/> Display List
+                    <input name="list" type="checkbox"/> Display List &nbsp;
                 </label>
                 <label for="numbers">
                     <input name="numbers" type="checkbox"/> Show Point Numbers

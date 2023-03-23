@@ -1,10 +1,10 @@
 import './App.css';
-import Shape from './components/shape.js';
-import Points from './components/points.js';
-import Function from './components/function.js';
-import Toggles from './components/toggles.js';
+// import Shape from './components/shape.js';
+// import Points from './components/points.js';
+// import Function from './components/function.js';
+// import Toggles from './components/toggles.js';
 import Display from './components/display.js';
-import Steps from './components/steps.js';
+// import Steps from './components/steps.js';
 
 function App() {
   return (
@@ -13,24 +13,21 @@ function App() {
         <div class="header">
             <h1>Circular Threading Simulator</h1>
         </div>
-        <div class="shape">
+        {/* <div class="shape">
             <Shape />
-        </div>
-        <div class="points">
-            <Points />
-        </div>
-        <div class="function">      
+        </div> */}
+        {/* <div class="function">      
             <Function />
-        </div>
-        <div class="toggles">
+        </div> */}
+        {/* <div class="toggles">
             <Toggles />
-        </div>
+        </div> */}
         <div class="display">
             <Display />
         </div>
-        <div class="steps">
+        {/* <div class="steps">
             <Steps />
-        </div>
+        </div> */}
       </div>
     </div>
   );
