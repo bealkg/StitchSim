@@ -11,7 +11,7 @@ function App() {
     <div className="App">
       <div class="wrapper"> 
         <div class="header">
-            <h1>Circular Threading Simulator</h1>
+            <h1>Curve Stitching Simulator</h1>
         </div>
         {/* <div class="shape">
             <Shape />
