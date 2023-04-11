@@ -14,10 +14,13 @@ class Points extends Component {
         const inputpts = this.props.pts;
         return (
             <div class="ptcontainer" onChange={this.onChangeValue}>
-                <p>Select the amount of points around the perimeter of the shape.</p>
-                    <input name="points" type="text" 
-                        value={inputpts}
-                        onChange={this.handleChange}/> points
+                <h2>Points</h2>
+                <input name="points" type="number" 
+                    min="0"
+                    step="1"
+                    max="360"
+                    value={inputpts}
+                    onChange={this.handleChange}/> points
             </div>
         );
     }

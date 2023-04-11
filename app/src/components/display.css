@@ -1,0 +1,13 @@
+.displaywrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.displaywrapper > div {
+    margin-right: 10px;
+}
+
+.turtle {
+    grid-column-start: 2;
+    margin-top: 10px;
+}

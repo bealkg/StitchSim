@@ -113,10 +113,25 @@ class Turtle {
 	}
 
     stamp() {
-        let draw = this.draw
+        let pendraw = this.draw
+        let head = this.dir
         this.draw = true
-        this.circle(2, 0, 0)
-        this.draw = draw
+        this.dir = 0
+        this.goto(this.x, this.y - 2)
+        this.circle(2.0, 0, 0)
+        this.circle(1.5, 0, 0)
+        this.circle(1.0, 0, 0)
+        this.circle(0.5, 0, 0)
+        this.goto(this.x, this.y + 2)
+        this.draw = pendraw
+        this.dir = head
+        return this
+    }
+
+    towards(target_x: number, target_y: number) {
+        let x = target_x - this.x
+        let y = target_y - this.y
+        this.dir = Math.atan2(y, x)
         return this
     }
 
@@ -253,6 +268,10 @@ class Turtle {
 		return this
 	}
 
+    getheading() {
+        return this.dir
+    }
+
 	setheading(angle: number) {
 		this.dir = angle
 		return this
@@ -289,6 +308,10 @@ class Turtle {
 	toradians(angle: number) {
 		return angle * ((Math.PI * 2) / 360)
 	}
+
+    todegrees(angle: number) {
+        return angle * (180 / Math.PI)
+    }
 
 	circle(radius: number, extent = 360, steps: number) {
 		if (!extent || extent === 0) {
@@ -385,7 +408,9 @@ class Turtle {
 	up = this.penup
 	jmp = this.jump
 	seth = this.setheading
+    head = this.getheading
     dot = this.stamp
+    face = this.towards
 }
 
 export default Turtle

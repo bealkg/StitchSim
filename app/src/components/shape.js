@@ -4,22 +4,28 @@ class Shape extends Component {
     constructor(props) {
         super(props);
         this.handleShChange = this.handleShChange.bind(this);
-        this.handleCuChange = this.handleCuChange.bind(this);
+        this.state = {customop: true};
     }
 
     handleShChange(event) {
-        this.props.onShChange(event.target.value);
-    }
-
-    handleCuChange(event) {
-        this.props.onCuChange(event.target.value);
+        if (event.target.value === "circle" || event.target.value === "square" ||
+            event.target.value === "cross" || event.target.value === "triangle" ||
+            event.target.value === "pentagon") {
+            this.setState({customop: true});
+            this.props.onShChange(event.target.value);
+        } else {
+            this.setState({customop: false});
+            if (event.target.value > 2) {
+                this.props.onShChange(event.target.value);
+            }
+        }
     }
 
     render() {
-        // const inputcustom = this.props.cu
+        const inputcustom = this.props.cu
         return (
         <div class="container" onChange={this.handleShChange}>
-            <p>Select the shape you would like to use.</p>
+            <h2>Shape</h2>
             <table align="center">
                 <tr align="left"> 
                     <td><label for="circle">
@@ -32,17 +38,13 @@ class Shape extends Component {
                     <td><label for="cross">
                         <input type="radio" value="cross" name="shape" id="cross"/> Cross 
                     </label></td>
-                    <td><label for="triangle">
-                        <input type="radio" value="triangle" name="shape" id="triangle"/> Triangle
-                    </label></td>
-                </tr><tr align="left">
-                    <td><label for="pentagon">
-                        <input type="radio" value="pentagon" name="shape" id="pentagon"/> Pentagon 
-                    </label></td>
                     <td><label for="custom">
                         <input type="radio" value="custom" name="shape" id="custom"/> Custom &nbsp;
-                        {/* <input type="text" name="customshape" value={inputcustom} onChange={this.handleCuChange}/> */}
-                    </label></td>                    
+                        <input type="number" name="shape"
+                               min="3" step="1"
+                               value={inputcustom} disabled={this.state.customop}
+                               onChange={this.handleShChange}/>
+                    </label></td>
                 </tr>
             </table>
         </div>

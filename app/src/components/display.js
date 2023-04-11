@@ -1,21 +1,25 @@
-import React, { Component } from "react";
+import React, { Component } from 'react'
 import Turtle from './turtle/Turtle.tsx'
 import Shape from './shape.js'
 import Points from './points.js'
 import Function from './function.js'
+import './display.css'
 
 class Display extends Component {
     constructor(props) {
         super(props);
-        this.state = {sh: 'circle', pts: '', fn: '', cu: '6', points: [], vertices: []};
-        this.handleShChange = this.handleShChange.bind(this);
+        this.state = {sh: 'circle', 
+                      pts: 0, 
+                      fn: 0, 
+                      cu: 0, 
+                      points: [], 
+                      vertices: [], 
+                      sides:[[]],
+                      fnop: 'circlefn'};
         this.handlePtChange = this.handlePtChange.bind(this);
         this.handleFnChange = this.handleFnChange.bind(this);
-        this.handleCuChange = this.handleCuChange.bind(this);
-    } 
-    
-    handleShChange(shape) {
-        this.setState({sh: shape});
+        this.handleShChange = this.handleShChange.bind(this);
+        this.handleOpChange = this.handleOpChange.bind(this);
     } 
 
     handlePtChange(points) {
@@ -26,17 +30,25 @@ class Display extends Component {
         this.setState({fn: func});
     }
 
-    handleCuChange(custom) {
-        this.setState({cu: custom});
+    handleShChange(shape) {
+        this.setState({sh: shape});
+        this.setState({cu: shape});
+    }
+
+    handleOpChange(option) {
+        this.setState({fnop: option});
+        this.setState({fn: 0});
     }
 
     render() {
         const sh = this.state.sh;
         const pts = this.state.pts;
         const fn  = this.state.fn;
-        const cu = this.state.cu;
+        let cu = this.state.cu;
         let pointarr = this.state.points;
         let vertices = this.state.vertices;
+        let sides = this.state.sides;
+        let fnop = this.state.fnop;
         return(
             <div class="displaywrapper">
                 <div class="shape">
@@ -46,81 +58,65 @@ class Display extends Component {
                     <Points onPtChange={this.handlePtChange}/>
                 </div>
                 <div class="function">
-                    <Function onFnChange={this.handleFnChange}/>
+                    <Function onFnChange={this.handleFnChange} onOpChange={this.handleOpChange}/>
                 </div>
                 <div class="turtle">
                     <Turtle
                         height={window.innerHeight * 2 / 3}
                         draw={(turtle) => {
-                            function drawCircle() {
-                                turtle
-                                    .pu()
-                                    .goto(0,-180)
-                                    .pd()
-                                    .circle(180)
-                                    .stroke()
-                            }
 
-                            function drawSquare() {
+                            function drawShape(shape, size) {
+                                vertices = []
                                 turtle.pu()
-                                turtle.goto(-180,180)
-                                turtle.pd()
-                                for (let i = 0; i <= 4; i++) {
-                                    turtle 
-                                        .fd(360)
-                                        .lt(90)
-                                        .stroke()
-                                }
-                            }
-
-                            function drawCross() {
-                                for (let i = 0; i < 4; i++) {
-                                    turtle.goto(0,0)
-                                    turtle.fd(180)
-                                    turtle.rt(90)
-                                }
-                                turtle.stroke()
-                            }
-
-                            function drawShape(x) {
-                                turtle.pu()
-                                turtle.seth(11)
-                                for (let i = 0; i < x; i++) {
-                                    turtle.goto(0,0)
-                                    turtle.fd(180)
-                                    vertices.push([turtle.getxpos(), turtle.getypos()])
-                                    turtle.rt(360/x)
-                                }
-                                turtle.pd()
-                                for (let i = 0; i < x-1; i++) {
-                                    turtle.goto(vertices[i][0], vertices[i][1])
-                                    turtle.goto(vertices[i+1][0], vertices[i+1][1])
-                                    turtle.stroke()
-                                }
-                                turtle.goto(vertices[0][0], vertices[0][1])
-                                turtle.stroke()
-                            }
-
-                            function drawCircleDots(points) {
-                                for (let i = 0; i < points; i++) {
-                                        turtle.pu()
+                                if (shape === "circle") {
+                                    turtle.goto(0,-200)
+                                    turtle.pd()
+                                    turtle.circle(200)
+                                } else if (shape === "square" || parseInt(shape, 10) === 4) {
+                                    turtle.goto(-180,180)
+                                    turtle.pd()
+                                    for (let i = 0; i <= 4; i++) { 
+                                            turtle.fd(360)
+                                            turtle.lt(90)
+                                    }
+                                } else if (shape === "cross") {
+                                    for (let i = 0; i < 4; i++) {
                                         turtle.goto(0,0)
-                                        turtle.forward(180)
+                                        turtle.pd()
+                                        turtle.fd(200)
+                                        turtle.rt(90)
+                                    }
+                                } else {
+                                    turtle.seth(11)
+                                    for (let i = 0; i < size; i++) {
+                                        turtle.goto(0,0)
+                                        turtle.fd(200)
+                                        vertices.push([turtle.getxpos(), turtle.getypos()])
+                                        turtle.rt(360/size)
+                                    }
+                                    turtle.pd()
+                                    for (let i = 0; i < size-1; i++) {
+                                        turtle.goto(vertices[i][0], vertices[i][1])
+                                        turtle.goto(vertices[i+1][0], vertices[i+1][1])
+                                    }
+                                    turtle.goto(vertices[0][0], vertices[0][1])
+                                }
+                                turtle.stroke()
+                            }
+
+                            function drawDots(shape, points, size) {
+                                pointarr = []
+                                sides = [[]]
+                                turtle.pu()
+                                if (shape === "circle") {
+                                    for (let i = 0; i < points; i++) {
+                                        turtle.goto(0,0)
+                                        turtle.forward(200)
                                         turtle.dot()
                                         pointarr.push([turtle.getxpos(), turtle.getypos()])
                                         turtle.lt(360/pts)
-                                        turtle.stroke()
-                                }
-                                return 
-                            }
-
-                            // function drawShapeDots(points) {
-
-                            // }
-
-                            function drawSquareDots(points) {
-                                if (points % 4 === 0) {
-                                    turtle.pu()
+                                    }
+                                } else if (shape === "square" || parseInt(shape, 10) === 4) {
                                     turtle.goto(-180,180)
                                     for (let i = 0; i < 4; i++) {
                                         for (let j = 0; j < points/4; j++) {
@@ -129,62 +125,87 @@ class Display extends Component {
                                             turtle.fd(360/(points/4))
                                         }
                                         turtle.rt(90)
+                                    }
+                                } else if (shape === "cross") {
+                                    let dist = 200/(points/4)
+                                    for (let i = 0; i < 4; i++) {
+                                        turtle.goto(0,0)
+                                        pointarr = []
+                                        for (let j = 0; j < points/4; j++) {
+                                            turtle.fd(dist)
+                                            turtle.dot()
+                                            pointarr.push([turtle.getxpos(), turtle.getypos()])
+                                        }
+                                        sides[i] = pointarr
+                                        turtle.lt(90)
+                                    }
+                                } else {
+                                    let dist = Math.sqrt(Math.pow(vertices[1][0] - vertices[0][0], 2) 
+                                                + Math.pow(vertices[1][1] - vertices[0][1], 2))
+                                    let ptsperside = points/size
+                                    for (let i = 0; i < size; i++) {
+                                        turtle.goto(vertices[i][0], vertices[i][1])
+                                        turtle.face(vertices[(i+1) % size][0], vertices[(i+1) % size][1])
+                                        for (let j = 0; j < ptsperside; j++) {
+                                            turtle.dot()
+                                            pointarr.push([turtle.getxpos(), turtle.getypos()])
+                                            turtle.fd(dist/ptsperside)
+                                        }
+                                    }
+                                }
+                                turtle.stroke()
+                            }
+
+                            function connectPts(shape, option, func) {
+                                if (shape === "cross") {
+                                    for (let i = 0; i < 4; i++) {
+                                        for (let j = 0; j < (pts/4); j++) {
+                                            let k = (pts/4 - func - j) % (pts/4)
+                                            if (k < 0) {
+                                                k += parseInt((pts/4), 10)
+                                            }
+                                            turtle.pd()
+                                            turtle.goto(sides[i][j][0], sides[i][j][1])
+                                            turtle.goto(sides[(i + 1) % 4][k][0], sides[(i + 1) % 4][k][1])
+                                            turtle.pu()
+                                            turtle.stroke()
+                                        }
+                                    }
+                                } else if (option === "circlefn") {
+                                    for (let i = 0; i < pts; i++) {
+                                        turtle.pd()
+                                        turtle.goto(pointarr[i][0], pointarr[i][1])
+                                        let j = (i * func) % pts
+                                        turtle.goto(pointarr[j][0], pointarr[j][1])
+                                        turtle.pu()
                                         turtle.stroke()
-                                    }
-                                }
-                            }
-
-                            function connectCircPts(func) {
-                                for (let i = 0; i < pts; i++) {
-                                    turtle.pd()
-                                    turtle.goto(pointarr[i][0], pointarr[i][1])
-                                    let j = (i * func) % pts
-                                    turtle.goto(pointarr[j][0], pointarr[j][1])
+                                    } 
+                                } else if (option === "squarefn") {
                                     turtle.pu()
-                                    turtle.stroke()
-                                } 
+                                    turtle.goto(-200,-200)
+                                    let j = (parseInt(func, 10) + (pts/4)) % pts
+                                    for (let i = 0; i < pts; i++) {
+                                        turtle.pd()
+                                        turtle.goto(pointarr[i][0], pointarr[i][1])
+                                        turtle.goto(pointarr[j][0], pointarr[j][1])
+                                        turtle.pu()
+                                        turtle.stroke()
+                                        j = (j + 1) % pts
+                                    }
+                                }
                             }
-
-                            // function connectSqPts(func) {
-                            //     for (let i = 0; i < pts; i++) {
-                            //         turtle.pd()
-                            //         turtle.goto(pointarr[i][0], pointarr[i][1])
-                            //         let j = (i + func + (pts/4)) % pts
-                            //         turtle.goto(pointarr[j][0], pointarr[j][1])
-                            //         turtle.pu()
-                            //         turtle.stroke()
-                            //     }
-                            // }
-
+          
                             if (sh === "circle") {
-                                drawCircle(1)
-                                pointarr = []
-                                if (pts > 0) {
-                                    drawCircleDots(pts)
-                                    if (fn > 0) {
-                                        connectCircPts(fn)
-                                    }
+                                cu = 1
+                            } else if (sh === "square" || sh === "cross") {
+                                cu = 4
+                            } 
+                            drawShape(sh, cu)
+                            if (pts > 0 && pts % cu === 0) {
+                                drawDots(sh, pts, cu)
+                                if (fn > 0) {
+                                    connectPts(sh, fnop, fn)
                                 }
-                            } else if (sh === "square") {
-                                drawSquare(1)
-                                pointarr = []
-                                if (pts > 0) {
-                                    drawSquareDots(pts)
-                                    if (fn > 0) {
-                                        connectCircPts(fn)
-                                    }
-                                }
-                            } else if (sh === "cross") {
-                                drawCross(1)
-                            } else if (sh === "triangle") {
-                                vertices = []
-                                drawShape(3)
-                            } else if (sh === "pentagon") {
-                                vertices = []
-                                drawShape(5)
-                            } else if (sh === "custom") {
-                                vertices = []
-                                drawShape(cu)
                             }
                         }}
                     />
