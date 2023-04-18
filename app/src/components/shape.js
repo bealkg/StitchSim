@@ -26,22 +26,28 @@ class Shape extends Component {
         return (
         <div class="container" onChange={this.handleShChange}>
             <h2>Shape</h2>
+            
             <table align="center">
                 <tr align="left"> 
                     <td><label for="circle">
-                        <input type="radio" value="circle" name="shape" id="circle" defaultChecked/> Circle 
+                        <input type="radio" value="circle" 
+                               name="shape" id="circle" 
+                               defaultChecked/> Circle
                     </label></td>
                     <td><label for="square">
-                        <input type="radio" value="square" name="shape" id="square"/> Square
+                        <input type="radio" value="square" 
+                               name="shape" id="square"/> Square
                     </label></td>
                 </tr><tr align="left">
                     <td><label for="cross">
-                        <input type="radio" value="cross" name="shape" id="cross"/> Cross 
+                        <input type="radio" value="cross" 
+                               name="shape" id="cross"/> Cross 
                     </label></td>
                     <td><label for="custom">
-                        <input type="radio" value="custom" name="shape" id="custom"/> Custom &nbsp;
+                        <input type="radio" value="custom" 
+                               name="shape" id="custom"/> Custom &nbsp;
                         <input type="number" name="shape"
-                               min="3" step="1"
+                               min="3" step="1" max="100"
                                value={inputcustom} disabled={this.state.customop}
                                onChange={this.handleShChange}/>
                     </label></td>

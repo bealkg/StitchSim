@@ -17,7 +17,6 @@ class Function extends Component {
         if (event.target.value === "circlefn") {
             this.setState({circlefn: false});
             this.setState({squarefn: true});
-            this.inputfn = 0
         } else if (event.target.value === "squarefn") {
             this.setState({circlefn: true});
             this.setState({squarefn: false});
@@ -32,23 +31,23 @@ class Function extends Component {
                 <table align="center">
                     <tr align="left">
                         <label for="circlefn">
-                            <input type="radio" value="circlefn" name="func" id="circlefn" onChange={this.handleOpChange} defaultChecked/> 
+                            <input type="radio" value="circlefn" 
+                                   name="func" id="circlefn" 
+                                   onChange={this.handleOpChange} defaultChecked/> &nbsp;
                             <input name="function" type="number" id="circlefn"
-                                min="0"
-                                step="1"
-                                value={inputfn}
-                                disabled={this.state.circlefn}
-                                onChange={this.handleChange}/> * n % amount of points
+                                   min="0" step="1" value={inputfn}
+                                   disabled={this.state.circlefn}
+                                   onChange={this.handleChange}/> &times; n % points
                         </label>
                     </tr><tr align="left">
                         <label for="squarefn">
-                            <input type="radio" value="squarefn" name="func" id="squarefn" onChange={this.handleOpChange}/>
+                            <input type="radio" value="squarefn" 
+                                   name="func" id="squarefn" 
+                                   onChange={this.handleOpChange}/> &nbsp;
                             <input name="function" type="number" id="squarefn"
-                                min="0"
-                                step="1"
-                                value={inputfn}
-                                disabled={this.state.squarefn}
-                                onChange={this.handleChange}/> + n % amount of points
+                                   min="0" step="1" value={inputfn}
+                                   disabled={this.state.squarefn}
+                                   onChange={this.handleChange}/> + n % points
                         </label>
                     </tr>
                 </table>

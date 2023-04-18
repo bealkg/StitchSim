@@ -11,23 +11,11 @@ function App() {
     <div className="App">
       <div class="wrapper"> 
         <div class="header">
-            <h1>Curve Stitching Simulator</h1>
+            <h1>StitchSim</h1>
         </div>
-        {/* <div class="shape">
-            <Shape />
-        </div> */}
-        {/* <div class="function">      
-            <Function />
-        </div> */}
-        {/* <div class="toggles">
-            <Toggles />
-        </div> */}
         <div class="display">
             <Display />
         </div>
-        {/* <div class="steps">
-            <Steps />
-        </div> */}
       </div>
     </div>
   );

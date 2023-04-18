@@ -10,7 +10,7 @@ class Steps extends Component {
     render() {
         return ( 
         <div class="container">
-            <p>List of steps.</p>
+            <h2>Steps</h2>
         </div>
         );
     }

@@ -3,6 +3,7 @@ import Turtle from './turtle/Turtle.tsx'
 import Shape from './shape.js'
 import Points from './points.js'
 import Function from './function.js'
+// import Steps from './steps.js'
 import './display.css'
 
 class Display extends Component {
@@ -24,6 +25,7 @@ class Display extends Component {
 
     handlePtChange(points) {
         this.setState({pts: points});
+        this.setState({fn: 0});
     }
 
     handleFnChange(func) {
@@ -33,6 +35,8 @@ class Display extends Component {
     handleShChange(shape) {
         this.setState({sh: shape});
         this.setState({cu: shape});
+        this.setState({pts: 0});
+        this.setState({fn: 0});
     }
 
     handleOpChange(option) {
@@ -60,10 +64,14 @@ class Display extends Component {
                 <div class="function">
                     <Function onFnChange={this.handleFnChange} onOpChange={this.handleOpChange}/>
                 </div>
+                {/* <div class="steps">
+                    <Steps />
+                </div> */}
                 <div class="turtle">
                     <Turtle
                         height={window.innerHeight * 2 / 3}
                         draw={(turtle) => {
+                            turtle.setcolor('#3a5a40').setlinewidth(2)
 
                             function drawShape(shape, size) {
                                 vertices = []
@@ -156,7 +164,7 @@ class Display extends Component {
                                 turtle.stroke()
                             }
 
-                            function connectPts(shape, option, func) {
+                            function connectPts(shape, option, func, size) {
                                 if (shape === "cross") {
                                     for (let i = 0; i < 4; i++) {
                                         for (let j = 0; j < (pts/4); j++) {
@@ -165,6 +173,7 @@ class Display extends Component {
                                                 k += parseInt((pts/4), 10)
                                             }
                                             turtle.pd()
+                                            turtle.transformColor(c => c.rotate(Math.round(360/pts)))
                                             turtle.goto(sides[i][j][0], sides[i][j][1])
                                             turtle.goto(sides[(i + 1) % 4][k][0], sides[(i + 1) % 4][k][1])
                                             turtle.pu()
@@ -183,9 +192,10 @@ class Display extends Component {
                                 } else if (option === "squarefn") {
                                     turtle.pu()
                                     turtle.goto(-200,-200)
-                                    let j = (parseInt(func, 10) + (pts/4)) % pts
+                                    let j = (parseInt(func, 10) + (pts/size)) % pts
                                     for (let i = 0; i < pts; i++) {
                                         turtle.pd()
+                                        turtle.transformColor(c => c.rotate(Math.round(360/pts)))
                                         turtle.goto(pointarr[i][0], pointarr[i][1])
                                         turtle.goto(pointarr[j][0], pointarr[j][1])
                                         turtle.pu()
@@ -204,7 +214,7 @@ class Display extends Component {
                             if (pts > 0 && pts % cu === 0) {
                                 drawDots(sh, pts, cu)
                                 if (fn > 0) {
-                                    connectPts(sh, fnop, fn)
+                                    connectPts(sh, fnop, fn, cu)
                                 }
                             }
                         }}

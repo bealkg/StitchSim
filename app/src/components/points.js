@@ -14,13 +14,12 @@ class Points extends Component {
         const inputpts = this.props.pts;
         return (
             <div class="ptcontainer" onChange={this.onChangeValue}>
-                <h2>Points</h2>
+                <h2>Points</h2><label for="points">
                 <input name="points" type="number" 
-                    min="0"
-                    step="1"
-                    max="360"
-                    value={inputpts}
+                    min="0" step="1" max="360"
+                    value={inputpts} id="points"
                     onChange={this.handleChange}/> points
+                </label>
             </div>
         );
     }

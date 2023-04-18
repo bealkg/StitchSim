@@ -34,7 +34,7 @@ class Turtle {
 
 	constructor(canvas: HTMLCanvasElement) {
 		this._ctx = canvas.getContext('2d') as CanvasRenderingContext2D
-
+        
 		this.x = 0
 		this.y = 0
 		this.dir = 0
@@ -118,6 +118,8 @@ class Turtle {
         this.draw = true
         this.dir = 0
         this.goto(this.x, this.y - 2)
+        this.circle(3.0, 0, 0)
+        this.circle(2.5, 0, 0)
         this.circle(2.0, 0, 0)
         this.circle(1.5, 0, 0)
         this.circle(1.0, 0, 0)
@@ -125,6 +127,11 @@ class Turtle {
         this.goto(this.x, this.y + 2)
         this.draw = pendraw
         this.dir = head
+        return this
+    }
+
+    scribe(text: string) {
+        this._ctx.fillText(text, this._x, this._y)
         return this
     }
 
@@ -411,6 +418,7 @@ class Turtle {
     head = this.getheading
     dot = this.stamp
     face = this.towards
+    write = this.scribe
 }
 
 export default Turtle
