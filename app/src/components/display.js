@@ -3,20 +3,14 @@ import Turtle from './turtle/Turtle.tsx'
 import Shape from './shape.js'
 import Points from './points.js'
 import Function from './function.js'
-// import Steps from './steps.js'
 import './display.css'
 
 class Display extends Component {
     constructor(props) {
         super(props);
-        this.state = {sh: 'circle', 
-                      pts: 0, 
-                      fn: 0, 
-                      cu: 0, 
-                      points: [], 
-                      vertices: [], 
-                      sides:[[]],
-                      fnop: 'circlefn'};
+        this.state = {sh: 'circle', pts: 0, fn: 0, 
+                      cu: 0, points: [], vertices: [], 
+                      sides:[[]], fnop: 'circlefn'};
         this.handlePtChange = this.handlePtChange.bind(this);
         this.handleFnChange = this.handleFnChange.bind(this);
         this.handleShChange = this.handleShChange.bind(this);
@@ -53,8 +47,10 @@ class Display extends Component {
         let vertices = this.state.vertices;
         let sides = this.state.sides;
         let fnop = this.state.fnop;
+
         return(
             <div class="displaywrapper">
+                <div class="inputwrapper">
                 <div class="shape">
                     <Shape onShChange={this.handleShChange}/>
                 </div>
@@ -64,12 +60,10 @@ class Display extends Component {
                 <div class="function">
                     <Function onFnChange={this.handleFnChange} onOpChange={this.handleOpChange}/>
                 </div>
-                {/* <div class="steps">
-                    <Steps />
-                </div> */}
+                </div>
                 <div class="turtle">
                     <Turtle
-                        height={window.innerHeight * 2 / 3}
+                        height={window.innerHeight * 13 / 25}
                         draw={(turtle) => {
                             turtle.setcolor('#3a5a40').setlinewidth(2)
 
@@ -173,7 +167,7 @@ class Display extends Component {
                                                 k += parseInt((pts/4), 10)
                                             }
                                             turtle.pd()
-                                            turtle.transformColor(c => c.rotate(Math.round(360/pts)))
+                                            // turtle.transformColor(c => c.rotate(Math.round(360/pts)))
                                             turtle.goto(sides[i][j][0], sides[i][j][1])
                                             turtle.goto(sides[(i + 1) % 4][k][0], sides[(i + 1) % 4][k][1])
                                             turtle.pu()
@@ -195,7 +189,7 @@ class Display extends Component {
                                     let j = (parseInt(func, 10) + (pts/size)) % pts
                                     for (let i = 0; i < pts; i++) {
                                         turtle.pd()
-                                        turtle.transformColor(c => c.rotate(Math.round(360/pts)))
+                                        // turtle.transformColor(c => c.rotate(Math.round(360/pts)))
                                         turtle.goto(pointarr[i][0], pointarr[i][1])
                                         turtle.goto(pointarr[j][0], pointarr[j][1])
                                         turtle.pu()
@@ -226,15 +220,3 @@ class Display extends Component {
 }
 
 export default Display;
-
-
-// will use later for animating
-// return function walk(i) {
-//     turtle.pd()
-//     turtle.goto(this.points[i][0], this.points[i][1])
-//     let j = i * this.func % this.pts
-//     turtle.goto(this.points[j][0], this.points[j][1])
-//     turtle.pu()
-//     turtle.stroke()
-//     return i < this.pts;
-// }; 

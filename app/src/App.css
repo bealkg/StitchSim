@@ -5,21 +5,15 @@
 
 body {
     text-align: center;
-    font-family: paperboard;
-    background-color: #dad7cd;
+    font-family: paperboard, serif;
+    background-color: #a3b18a;
     color: #344e41;
     font-size: calc(7px + 2vmin);
+    overflow: hidden;
 }
 
-h1{
-    font-size: calc(28px + 2vmin);
-}
+h1{ font-size: calc(28px + 2vmin); }
 
-h2{
-    font-size: calc(10px + 2vmin);
-} 
+.screen { background-color: #dad7cd; }
 
-[type="number"] {
-    background-color: white;
-    width: 3em;
-}
+.navbarlabels { background-color: #344e41; }
