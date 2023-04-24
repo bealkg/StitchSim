@@ -1,13 +1,27 @@
 .displaywrapper {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    display: inline-grid;
+    justify-items: center;
+    /* grid-template-columns: 1fr 1fr 1fr; */
 }
 
 .displaywrapper > div {
-    margin-right: 10px;
+    /* margin: auto; */
+    padding: 10px;
+    /* border: 1px solid black; */
+}
+
+.inputwrapper {
+    display: inline-grid;
+    justify-items: center;
+}
+
+.inputwrapper > div {
+    float: left;
+    grid-row: 1;
+    margin-right: 100px;
 }
 
 .turtle {
-    grid-column-start: 2;
-    margin-top: 10px;
+    grid-row: 2;
+    float: left;
 }
