@@ -17,9 +17,9 @@ class Function extends Component {
         } else {
             this.props.onFnChange(0);
             let fun = document.getElementById("squarefn");
-            fun.value = '0';
+            fun.value = ' ';
             fun = document.getElementById("circlefn");
-            fun.value = '0';
+            fun.value = ' ';
         }
     }
 
@@ -29,12 +29,12 @@ class Function extends Component {
             this.setState({circlefn: true});
             this.setState({squarefn: false});
             let fun = document.getElementById("squarefn");
-            fun.value = '0';
+            fun.value = ' ';
         } else if (event.target.value === "squarefn") {
             this.setState({circlefn: false});
             this.setState({squarefn: true});
             let fun = document.getElementById("circlefn");
-            fun.value = '0';
+            fun.value = ' ';
         }
     }
 
@@ -47,21 +47,21 @@ class Function extends Component {
                 <RadioGroup defaultValue="circlefn" name="fn-radio-group"
                             onChange={this.handleOpChange} sx={{display: 'flex'}}>
                     <div style={{display:'flex'}}>
-                    <FormControlLabel value="circlefn"
+                    <FormControlLabel value="circlefn" label="Multiply"
                                     control={<Radio checked={this.state.circlefn}/>}/>
                     <Zoom in={this.state.circlefn}>
                         <TextField name="function-input" type="number" size="small"
-                                   id="circlefn" value={inputfn} defaultValue="0"
-                                   onChange={this.handleChange} label="&times; n % points"/> 
+                                   id="circlefn" value={inputfn} defaultValue=" "
+                                   onChange={this.handleChange} /> 
                     </Zoom>
                     </div> 
                     <div style={{display:'flex'}}>
-                    <FormControlLabel value="squarefn"
+                    <FormControlLabel value="squarefn" label="Add"
                                     control={<Radio checked={this.state.squarefn}/>}/>
                     <Zoom in={this.state.squarefn}>
                         <TextField name="function-input" type="number" size="small"
-                                   id="squarefn" value={inputfn} defaultValue="0"
-                                   onChange={this.handleChange} label="+ n % points" /> 
+                                   id="squarefn" value={inputfn} defaultValue=" "
+                                   onChange={this.handleChange} /> 
                     </Zoom>
                     </div>
                 </RadioGroup>

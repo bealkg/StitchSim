@@ -12,12 +12,7 @@ class About extends Component {
                 <h2>What is Curve Stitching?</h2>
                 <p>
                     Curve Stitching is a type of geometric modeling that uses straight lines to create complex diagrams. 
-                    It is commonly used for needlepoint and crossstitching patterns. It works with 3 inputs. First, the shape. 
-                    The shape you chose is the frame that the diagram will fit into. Second, the points.
-                    The points you chose is the amount of points around the perimeter of the shape. If you have a shape with 3 or more sides, 
-                    the points will be the amount of points per side. For example, if you chose a shape with 3 edges, and 1 point per edge, you 
-                    will have 3 points total. The last input is the function. There are two function options, the first is the multiply
-                    function. The second is the add function. </p>
+                    It is commonly used for needlepoint and crossstitching patterns. </p>
                     
                 <p>
                     To understand how curve stitching works, first imagine you have a circle with 10 points. The points
@@ -36,7 +31,7 @@ class About extends Component {
                     0, multiply 0 by 2, and mod the function by 10. The result is 0, so no line will be drawn.
                     Then it will move to point 1. (1 * 2) % 10 = 2, so it will connect point 1 to point 2.
                     It will connect point 2 to point 4, point 3 to point 6, and so on until all of the points 
-                    have been plugged into the function. </p>
+                    have been plugged into the function. This function option doesn't work for spokes.</p>
 
                     <Card sx={{ maxWidth: 345, marginLeft: "auto", marginRight: "auto" }} >
                     <CardMedia
@@ -66,7 +61,8 @@ class About extends Component {
                 <h3>Step One: Shape</h3>
                 <p>Select the shape you want. Your options are Circle, Edges, and Spokes. Edges and Spokes both take input from 3 to 50.
                     Edges creates a shape with the amount of edges you select. For example, 3 edges is a triangle, 4 is a square, and so on.
-                    Spokes draws the amount of lines input radiating from the center, similar to the spokes on a bike wheel. 
+                    Spokes draws the amount of lines input radiating from the center, similar to the spokes on a bike wheel. The multiply function
+                    doesn't work for spokes. If spokes are chosen, both function buttons will default to the add function. 
                 </p>
                 <h3>Step Two: Points</h3>
                 <p>Select the amount of points you want. If you have chosen Edges or Spokes as your shape, the amount of points
@@ -77,7 +73,7 @@ class About extends Component {
                 <p>Select the function you want to use. The difference between the add and the multiply functions are shown above.
                     The biggest function you can input is 200, the same as the max amount of points per shape. The patterns will 
                     repeat themselves once you get a function bigger than the amount of points, so a max of 200 guarantees all 
-                    possible patterns will be available, even with 200 points. 
+                    possible patterns will be available, even with 200 points.
                 </p>
             </div>
         );

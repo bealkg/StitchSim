@@ -11,7 +11,7 @@ class Points extends Component {
         if (event.target.value > 0 & event.target.value < 201) {
             this.props.onPtChange(event.target.value);
         } else {
-            event.target.value = '0';
+            event.target.value = ' ';
         }
     }
 
@@ -22,7 +22,7 @@ class Points extends Component {
                 <FormControl>
                 <Typography variant="h2">Points per Edge</Typography>
                 <TextField id="points-input" type="number" size="small"
-                            value={inputpts} defaultValue="0" onChange={this.handleChange}
+                            value={inputpts} defaultValue=" " onChange={this.handleChange}
                             />
                 </FormControl>
             </div>

@@ -47,11 +47,11 @@ class Shape extends Component {
             num.value = '3';
         }
         let pts = document.getElementById("points-input");
-        pts.value = '0';
+        pts.value = ' ';
         let func = document.getElementById("circlefn");
-        func.value = '0';
+        func.value = ' ';
         func = document.getElementById("squarefn");
-        func.value = '0';
+        func.value = ' ';
     }
 
     render() {
