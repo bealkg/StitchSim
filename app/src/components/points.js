@@ -8,15 +8,11 @@ class Points extends Component {
     }
 
     handleChange(event) {
-        if (event.target.value > 0 & event.target.value < 361) {
+        if (event.target.value > 0 & event.target.value < 201) {
             this.props.onPtChange(event.target.value);
         } else {
             event.target.value = '0';
         }
-        // let funcs = document.getElementsByName("function-input");
-        // for (let f of funcs) {
-        //     f.value = ' ';
-        // }
     }
 
     render() {
@@ -24,7 +20,7 @@ class Points extends Component {
         return (
             <div class="ptcontainer" onChange={this.onChangeValue} style={{display:'flex', paddingLeft:'10px'}}>
                 <FormControl>
-                <Typography variant="h2">Points</Typography>
+                <Typography variant="h2">Points per Edge</Typography>
                 <TextField id="points-input" type="number" size="small"
                             value={inputpts} defaultValue="0" onChange={this.handleChange}
                             />

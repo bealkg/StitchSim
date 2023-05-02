@@ -12,7 +12,15 @@ class Function extends Component {
     } 
 
     handleChange(event) {
-        this.props.onFnChange(event.target.value);
+        if (event.target.value < 201 & event.target.value > 0) {
+            this.props.onFnChange(event.target.value);
+        } else {
+            this.props.onFnChange(0);
+            let fun = document.getElementById("squarefn");
+            fun.value = '0';
+            fun = document.getElementById("circlefn");
+            fun.value = '0';
+        }
     }
 
     handleOpChange(event) {

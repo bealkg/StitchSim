@@ -9,11 +9,26 @@ body {
     background-color: #a3b18a;
     color: #344e41;
     font-size: calc(7px + 2vmin);
-    overflow: hidden;
+    font-weight: 600;
+    /* overflow: hidden; */
 }
 
-h1{ font-size: calc(28px + 2vmin); }
+h1 { font-size: calc(28px + 2vmin); }
+
+p { 
+    text-align: left;
+    text-indent: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding: 1%;
+ }
 
 .screen { background-color: #dad7cd; }
 
 .navbarlabels { background-color: #344e41; }
+
+/* Display { overflow: hidden; } */
+
+/* .screen { overflow: hidden; } */
+
+/* About { overflow: scroll; } */

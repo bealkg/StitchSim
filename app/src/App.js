@@ -110,10 +110,10 @@ function App() {
                     </ThemeProvider>
                     </div>
                     </Box>
-                    <TabPanel value="1">
+                    <TabPanel value="1" class="mainpage">
                         <Display />
                     </TabPanel>
-                    <TabPanel value="2">
+                    <TabPanel value="2" class="aboutpage">
                         <About />
                     </TabPanel>
                 </TabContext>

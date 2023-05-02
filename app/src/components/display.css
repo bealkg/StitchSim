@@ -1,13 +1,10 @@
 .displaywrapper {
     display: inline-grid;
     justify-items: center;
-    /* grid-template-columns: 1fr 1fr 1fr; */
 }
 
 .displaywrapper > div {
-    /* margin: auto; */
     padding: 10px;
-    /* border: 1px solid black; */
 }
 
 .inputwrapper {

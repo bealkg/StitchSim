@@ -130,11 +130,6 @@ class Turtle {
         return this
     }
 
-    scribe(text: string) {
-        this._ctx.fillText(text, this._x, this._y)
-        return this
-    }
-
     towards(target_x: number, target_y: number) {
         let x = target_x - this.x
         let y = target_y - this.y
@@ -418,7 +413,6 @@ class Turtle {
     head = this.getheading
     dot = this.stamp
     face = this.towards
-    write = this.scribe
 }
 
 export default Turtle
