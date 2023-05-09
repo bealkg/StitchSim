@@ -82,7 +82,7 @@ class Display extends Component {
                 </div>
                 <div class="turtle">
                     <Turtle
-                        height={window.innerHeight * 5 / 9}
+                        height={450}
                         draw={(turtle) => {
                             turtle.setcolor('#3a5a40').setlinewidth(2)
 

@@ -12,7 +12,7 @@ class About extends Component {
                 <h2>What is Curve Stitching?</h2>
                 <p>
                     Curve Stitching is a type of geometric modeling that uses straight lines to create complex diagrams. 
-                    It is commonly used for needlepoint and crossstitching patterns. </p>
+                    It is commonly used for needlepoint and cross stitching patterns. </p>
                     
                 <p>
                     To understand how curve stitching works, first imagine you have a circle with 10 points. The points
@@ -27,11 +27,14 @@ class About extends Component {
                     </Card> 
 
                 <p>
-                    Now lets imagine you input 2 on the multiply function. The program will start at point 
-                    0, multiply 0 by 2, and mod the function by 10. The result is 0, so no line will be drawn.
-                    Then it will move to point 1. (1 * 2) % 10 = 2, so it will connect point 1 to point 2.
-                    It will connect point 2 to point 4, point 3 to point 6, and so on until all of the points 
-                    have been plugged into the function. This function option doesn't work for spokes.</p>
+                    First, you need to understand what the mod function is. The mod (modulous) function divides 
+                    two numbers and returns the remainder. For example, 15 % 10 = 5 because 15 / 10 = 1 with a remainder of 5,
+                    21 % 10 = 1, and 57 % 10 = 7. Now lets imagine you input 2 on the multiply function. 
+                    The program will start at point 0, multiply 0 by 2, and mod the function by 10. 
+                    The result is 0, so no line will be drawn. Then it will move to point 1. (1 * 2) % 10 = 2, 
+                    so it will connect point 1 to point 2. It will connect point 2 to point 4, point 3 to point 6, 
+                    and so on until all of the points have been plugged into the function. 
+                    This function option doesn't work for spokes.</p>
 
                     <Card sx={{ maxWidth: 345, marginLeft: "auto", marginRight: "auto" }} >
                     <CardMedia
@@ -55,7 +58,7 @@ class About extends Component {
                     />      
                     </Card> 
                 
-                <br /><br /><br />
+                <br /><br />
 
                 <h2>Tutorial</h2>
                 <h3>Step One: Shape</h3>
@@ -74,6 +77,33 @@ class About extends Component {
                     The biggest function you can input is 200, the same as the max amount of points per shape. The patterns will 
                     repeat themselves once you get a function bigger than the amount of points, so a max of 200 guarantees all 
                     possible patterns will be available, even with 200 points.
+                </p>
+
+                <br /><br />
+
+                <h2>How to Recreate</h2>
+                <h3>
+                    Find the perfect pattern? Follow these steps to recreate it yourself.
+                </h3>
+                <h3>Step One: Outline the shape</h3>
+                <p>
+                    First, you must draw the shape's perimeter. You can remove the outline later, if desired.
+                </p>
+                <h3>Step Two: Draw the points</h3>
+                <p>
+                    Now, you have to draw the points around the perimeter. The simulator starts numbering the points
+                    0 - n at the rightmost point from the center, then continues around the shape counter-clockwise. 
+                    It is very important that the points are evenly spaced around the shape. If the shape is a circle,
+                    place all the points m degrees apart, where m = 360 / the total amount of points. If you have 10 points
+                    on a circle, all the points should be 36 degrees apart (360 / 10 = 36). For a shape other than a circle,
+                    space the points evenly based on the length of each edge. If the shape is spokes, start numbering
+                    on the right most branch. Number with the smallest number at the center of the shape for each branch.
+                </p>
+                <h3>Step Three: Connect the points</h3>
+                <p>
+                    Now that the shape is set up, it is time to connect the points. Start at point 0, and apply whatever
+                    function you have chosen. The functions are explained above in the 'What is Curve Stitching?' section.
+                    Continue around the shape until you have connected each point. 
                 </p>
             </div>
         );

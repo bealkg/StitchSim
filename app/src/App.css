@@ -10,7 +10,6 @@ body {
     color: #344e41;
     font-size: calc(7px + 2vmin);
     font-weight: 600;
-    /* overflow: hidden; */
 }
 
 h1 { font-size: calc(28px + 2vmin); }
@@ -26,9 +25,3 @@ p {
 .screen { background-color: #dad7cd; }
 
 .navbarlabels { background-color: #344e41; }
-
-/* Display { overflow: hidden; } */
-
-/* .screen { overflow: hidden; } */
-
-/* About { overflow: scroll; } */
