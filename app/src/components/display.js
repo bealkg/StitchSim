@@ -8,9 +8,9 @@ import './display.css'
 class Display extends Component {
     constructor(props) {
         super(props);
-        this.state = {sh: "edges", pts: 0, fn: 0, 
+        this.state = {pts: 0, fn: 0, 
                       cu: 1, points: [], vertices: [], 
-                      sides:[[]], fnop: "circlefn", cuop: "edges"};
+                      sides:[[]], fnop: "circlefn", shop: "edges"};
         this.handlePtChange = this.handlePtChange.bind(this);
         this.handleFnChange = this.handleFnChange.bind(this);
         this.handleShChange = this.handleShChange.bind(this);
@@ -33,7 +33,7 @@ class Display extends Component {
     }
 
     handleShChange(shape) {
-        this.setState({sh: shape});
+        this.setState({shop: shape});
         this.setState({fn: 0});
         this.setState({pts: 0});
         this.setState({cu: 1});
@@ -58,7 +58,6 @@ class Display extends Component {
     }
 
     render() {
-        const sh = this.state.sh;
         const pts = this.state.pts;
         const fn  = this.state.fn;
         let cu = this.state.cu;
@@ -66,6 +65,7 @@ class Display extends Component {
         let vertices = this.state.vertices;
         let sides = this.state.sides;
         let fnop = this.state.fnop;
+        const shop = this.state.shop;
 
         return(
             <div class="displaywrapper">
@@ -218,10 +218,10 @@ class Display extends Component {
                                     }
                                 }
                             }
-                            drawShape(sh, cu)
-                            drawDots(sh, pts, cu)
+                            drawShape(shop, cu)
+                            drawDots(shop, pts, cu)
                             if (fn > 0) {
-                                connectPts(sh, fnop, fn, cu, pts)
+                                connectPts(shop, fnop, fn, cu, pts)
                             }
                         }}
                     />
