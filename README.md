@@ -5,4 +5,4 @@ A website to automate creating curve stitching diagrams. Users can customize the
 
 ## Web Application
 Uses Node.js and React. In the app folder, run the application locally with: ```npm start```
-The website is hosted at https://stitchsim-921d5.web.app
+The website is hosted at www.stitch-sim.com
